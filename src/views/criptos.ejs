@@ -1,0 +1,39 @@
+<% include partials/head %>
+   
+  <section class="hero is-light">
+      <div class="hero-body">
+          <nav class="navbar" role="navigation" aria-label="main navigation">
+          
+              <div class="navbar-brand">
+                  <figure>
+                    <img style="width: 50px" src="https://res.cloudinary.com/teepublic/image/private/s--68q0k_Sg--/t_Preview/b_rgb:191919,c_limit,f_jpg,h_630,q_90,w_630/v1503646856/production/designs/1849798_1.jpg" alt="ethereum-logo">
+                  </figure>
+                  <a class="navbar-item" style="color:black;font-weight: bold;font-size:15px" href="https://bulma.io">
+                    <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
+                    V-EXCHANGE
+                  </a>
+
+                  <a role="button" class="navbar-burger" onclick="toggleBurger()" id="burguer" aria-label="menu" aria-expanded="true">
+                      <span aria-hidden="true"></span>
+                      <span aria-hidden="true"></span>
+                      <span aria-hidden="true"></span>
+                  </a>
+                  
+              </div>
+              <div class="navbar-menu" id="teamList">
+                <div class="navbar-end">
+                    <a href="/login" class="navbar-item" style="color: black" href="">
+                        Login
+                    </a>
+                    <a href="/signup" class="navbar-item" style="color: black" href="">
+                        Registrar
+                    </a>
+                  
+                </div>
+              </div>
+          </nav>
+      </div>
+    </section>
+
+
+<% include partials/footer %>

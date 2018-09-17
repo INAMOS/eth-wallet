@@ -1,0 +1,93 @@
+
+<% include ../partials/head %>
+
+
+<section class="hero is-light">
+<div class="hero-body">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    
+        <div class="navbar-brand">
+            <figure>
+              <img style="width: 50px" src="https://res.cloudinary.com/teepublic/image/private/s--68q0k_Sg--/t_Preview/b_rgb:191919,c_limit,f_jpg,h_630,q_90,w_630/v1503646856/production/designs/1849798_1.jpg" alt="ethereum-logo">
+            </figure>
+            <a class="navbar-item" style="color:black;font-weight: bold;font-size:15px" href="https://bulma.io">
+              <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
+              V-EXCHANGE
+            </a>
+
+            <a role="button" class="navbar-burger" onclick="toggleBurger()" id="burguer" aria-label="menu" aria-expanded="true">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+            
+        </div>
+        <div class="navbar-menu" id="teamList">
+          <div class="navbar-end">
+              <a href="/login" class="navbar-item" style="color: black" href="">
+                  Login
+              </a>
+              <a href="/signup" class="navbar-item" style="color: black" href="">
+                  Registrar
+              </a>
+            
+          </div>
+        </div>
+    </nav>
+</div>
+</section>
+
+    <div class="column is-half is-offset-one-quarter">
+        
+        <% if(message.length >0) {%>
+
+            <article class="message is-primary">
+                <div class="message-body">
+                  <%= message %>
+                </div>
+            </article>
+
+        <% } %>
+        <div>
+
+        </div>
+        
+        <div class="panel">
+
+        <div class="panel-heading">Login</div>
+
+        <div class="panel-block">
+
+        <form class="control" action="/login" method="POST">
+       
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+                <input class="input" name="email" type="email" placeholder="Email">
+            </div>
+            </div>
+
+            <div class="field">
+            <label class="label">Password</label>
+            <div class="">
+                <input class="input" name="password" type="password" placeholder="Password">
+            
+            </div>
+            
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary">Submit</button>
+                </div>  
+            </div>
+            
+        </form>
+
+        </div>
+       
+        </div>
+    </div>
+   
+    
+<% include ../partials/footer %>
