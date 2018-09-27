@@ -1,0 +1,141 @@
+
+<% include partials/head %>
+
+
+<section class="hero is-dark">
+<div class="hero-body">
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    
+        <div class="navbar-brand">
+            <figure>
+              <img style="width: 50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
+            </figure>
+            <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/">
+              <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
+              V-EXCHANGE
+            </a>
+        </div>
+
+       <!--<div class="navbar-menu">
+          
+            <div class="dropdown is-rigth navbar-end" id="profile" onclick="toggleProfile()">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                    <span></span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                  <div class="dropdown-content">
+
+                      <hr class="dropdown-divider">
+
+                    <a href="#" class="dropdown-item">
+                      Monedero
+                    </a>
+
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item">
+                      Perfil
+                    </a>
+                    
+                    <hr class="dropdown-divider">
+                    <a href="/logout" class="dropdown-item">
+                      cerrar sesion
+                    </a>
+                  </div>
+                </div>
+            </div>
+
+        </div>-->
+        
+      
+    </nav>
+</div>
+</section>
+
+    <!--<div class="column is-half is-offset-one-quarter">-->
+
+      <!--<div class="panel">
+
+        <div class="panel-heading is-dark">Enviar Fondos</div>
+
+        <div class="panel-block">-->
+
+          <section class="section" style="background:rgb(245,245,245)">
+
+            <div class="container">
+
+              <h1 class="title">Cuenta</h1>
+              
+              <p><%= user.direccion %></p>
+
+              <button class="button is-success">Generar</button>
+              <!--<div class="columns">
+
+                <div class="column">
+
+                    <form class="control" action="/send" method="POST">
+
+                      <div class="field">
+                        <div class="control">
+                          <label for="">Desde</label>
+                          <input class="input" activate="false" type="text" value="dalsknsdalkgnsdlk" disabled="disabled">
+                        </div>
+                      </div>
+
+                      <div class="field">
+                          <div class="control">
+                              <label for="">Para</label>
+                            <input class="input" activate="false" type="text" name="to">
+                          </div>
+                        </div>
+
+                      <div class="field has-addons">
+                        
+                        
+                        <p class="control">
+                          <span class="select">
+                            <select>
+                              <option>ETH</option>
+                            </select>
+                          </span>
+                        </p>
+                        <p class="control is-expanded">
+                          
+                          <input class="input" type="number" min=0 placeholder="Monto" name="amount">
+                        </p>
+                        <p class="control">
+                          <input class="button is-success" type="submit" value="Enviar">
+                        </p>
+                      </div>
+                        
+                    </form>
+                </div>
+
+                <div class="column">
+                  <div>
+
+                  </div>
+                </div>
+
+                  
+              </div>-->
+              
+            </div>
+
+          </section>
+            
+
+
+        <!--</div>
+       
+        </div>-->
+
+    <!--</div>-->
+   
+    
+<% include partials/footer %>

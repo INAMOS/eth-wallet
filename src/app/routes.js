@@ -1,9 +1,11 @@
 var controllers=require('.././controllers');
-var passport=require('passport');
+var AuthMiddleware=require('../middlewares/auth');
 
-module.exports=(app)=>{
+module.exports=(app,passport)=>{
 
     app.get('/',controllers.HomeController.index);
+
+    app.get('/home',AuthMiddleware.isLogged,controllers.HomeController.home)
    
     app.get('/signup',controllers.UserController.getSignUp);
 
@@ -12,11 +14,18 @@ module.exports=(app)=>{
     app.get('/login',controllers.UserController.getSignIn);
     
     app.post('/login',passport.authenticate('local',{
-
-        succesRedirect:'/',
-        failureRedirect:'/',
+        successRedirect:'/home',
+        failureRedirect:'/login',
         failureFlash:true
+    }));
 
-    }),controllers.UserController.postSignIn);
+    app.get('/wallet',controllers.AccountController.wallet);
+
+    app.get('/send',controllers.AccountController.getSend);
+
+    app.post('/send',controllers.AccountController.postSend);
+
+
+    app.get('/logout',controllers.UserController.logout);
 
 };

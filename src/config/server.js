@@ -7,12 +7,13 @@ const morgan=require('morgan');
 const cookieParser=require('cookie-parser');
 const session=require('express-session');
 
-require('./passport/passport')(passport);
+
 
 //Settings
 app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname,'../views'))
 app.set('view engine','ejs');
+
 
 //Middlewares
 app.use(express.json());
@@ -28,8 +29,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+require('./passport/passport')(passport);
+
 //Routes
-require('.././app/routes')(app);
+require('.././app/routes')(app,passport);
+
+
 
 //static files
 app.use(express.static(path.join(__dirname,'../public')));
