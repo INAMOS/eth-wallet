@@ -69,44 +69,45 @@
 
             <div class="container">
 
-              <h1 class="title">Enviar Fondos</h1>
+              <h1 class="title">Crear Token</h1>
               <div class="columns">
 
                 <div class="column">
 
-                    <form class="control" action="/send" method="POST">
+                    <form class="control" action="/token" method="POST">
 
                       <div class="field">
                         <div class="control">
-                          <label for="">Desde</label>
-                          <input class="input" name="from" activate="false" type="text" value='<%= direccion %>'  disabled="disabled">
+                          <label for="">Nombre de Token</label>
+                          <input class="input" name="name" activate="false" type="text">
                         </div>
                       </div>
 
                       <div class="field">
                           <div class="control">
-                              <label for="">Para</label>
-                            <input class="input" activate="false" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text" name="to">
+                              <label for="">Codigo</label>
+                            <input class="input" name="code" activate="false" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text" >
                           </div>
                         </div>
 
-                      <div class="field has-addons">
-                        
-                        
-                        <p class="control">
-                          <span class="select">
-                            <select>
-                              <option>ETH</option>
-                            </select>
-                          </span>
-                        </p>
-                        <p class="control is-expanded">
-                          <input class="input" type="number" min=0 step="any" placeholder="Monto" name="amount">
-                        </p>
+                        <div class="field">
+                            <div class="control">
+                                <label for="">Decimales</label>
+                              <input class="input" name="decimals" activate="false" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <label for="">Cantidad inicial</label>
+                              <input class="input" name="inicial" activate="false" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text">
+                            </div>
+                        </div>
+
                         <p class="control">
                           <input class="button is-success" type="submit" value="Enviar">
                         </p>
-                      </div>
+                      
                         
                     </form>
                 </div>

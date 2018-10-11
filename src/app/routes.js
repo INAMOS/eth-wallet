@@ -25,6 +25,14 @@ module.exports=(app,passport)=>{
 
     app.post('/send',controllers.AccountController.postSend);
 
+    app.get('/token',controllers.AccountController.getToken);
+
+    app.post('/token',controllers.AccountController.postToken);
+
+    app.get('/sendToken',controllers.AccountController.getSendToken);
+
+    app.post('/sendToken',controllers.AccountController.postSendToken);
+
 
     app.get('/logout',controllers.UserController.logout);
 
