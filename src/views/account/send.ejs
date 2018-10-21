@@ -86,37 +86,60 @@
                       <div class="field">
                           <div class="control">
                               <label for="">Para</label>
-                            <input class="input" activate="false" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text" name="to">
+                            <input class="input" activate="false" pattern="0x[A-Za-z0-9]{1,42}" minlength="42" maxlength="42" title="Direccion incorrecta por favor introduzca una direccion valida" type="text" name="to" required>
                           </div>
-                        </div>
-
-                      <div class="field has-addons">
-                        
-                        
-                        <p class="control">
-                          <span class="select">
-                            <select>
-                              <option>ETH</option>
-                            </select>
-                          </span>
-                        </p>
-                        <p class="control is-expanded">
-                          <input class="input" type="number" min=0 step="any" placeholder="Monto" name="amount">
-                        </p>
-                        <p class="control">
-                          <input class="button is-success" type="submit" value="Enviar">
-                        </p>
                       </div>
-                        
+
+                      <div class="field">
+                        <div class="control">
+                            <label for="">Monto</label>
+                            <input class="input" type="number" min=0 step="any" placeholder="Monto" name="amount" required>  </div>
+                      </div>
+
+                      <button id="ButtonModal" class="button is-success">Enviar</button> 
+                        <!-- Modal -->
+                
+                      <div id="modal" class="modal">
+                          <div class="modal-background"></div>
+                          <div class="modal-card">
+                            <header class="modal-card-head">
+                              <p class="modal-card-title">Enviar</p>
+                              <button class="delete" aria-label="close" onclick="closeModal(); return false"></button>
+                            </header>
+                            <section class="modal-card-body">
+                              <!-- Content ... -->
+                              
+                              <h1>Datos</h1>
+                              
+                              <h1 id="from">Desde</h1>
+                              <h1 id="to">Para</h1>
+                              <h1 id="val">Monto</h1>
+                            </section>
+                            <footer class="modal-card-foot">
+                              <button class="button is-success">Continuar</button>
+                              <button class="button" onclick="closeModal(); return false">Cancel</button>
+                            </footer>
+                          </div>
+                      </div>
+
                     </form>
+                    <hr>
+
+                    <% if(SuccessMessage.length > 0) {%>
+                      <div id="notification" class="notification is-success">
+                        <button onclick="closeNoti()" class="delete"></button>
+                        <%= SuccessMessage %>
+                      </div>  
+                    <% } %>
+
+                    <% if(ErrorMessage.length > 0) {%>
+                      <div id="notification" class="notification is-danger">
+                        <button onclick="closeNoti()" class="delete"></button>
+                        <%= ErrorMessage %>
+                      </div>  
+                    <% } %>
+
                 </div>
-
-                <div class="column">
-                  <div>
-
-                  </div>
-                </div>
-
                   
               </div>
               
@@ -125,7 +148,39 @@
           </section>
             
 
+          <script>
 
+             const closeModal=()=>{
+                let modal=document.getElementById('modal');
+                modal.classList.remove('is-active')
+              }
+              
+              const closeNoti= ()=>{
+                let div=document.getElementById('notification');
+                div.style.display="none"
+              }
+              // const button=document.getElementById('ButtonModal');
+
+              // button.addEventListener('submit',function(e){
+                  
+              //     e.preventDefault();
+
+              //     let from,to,val;
+
+              //       from=document.getElementsByName('from');
+              //       to=document.getElementsByName('to');
+              //       val=document.getElementsByName('amount');
+      
+              //       f=document.getElementById('from').innerHTML=from[0].value;
+              //       document.getElementById('to').innerText=to[0].value;
+              //       document.getElementById('val').innerText=val[0].value;
+
+              //       let modal=document.getElementById('modal');
+              //       modal.classList.toggle('is-active');
+                  
+              // });
+             
+          </script>
         <!--</div>
        
         </div>-->
