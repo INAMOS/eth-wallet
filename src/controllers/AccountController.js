@@ -27,68 +27,71 @@ module.exports={
 
     postSend:function(req,res,next){
 
-        let db=mysql.createConnection(config);
-
-        db.connect();
-
         if(!web3.utils.isAddress(req.body.to)){
+
             req.flash('error','La direccion que introdujiste es incorrecta, por favor verificala')
             res.redirect('/send');
-        };
+        
+        }else{
 
-        web3.eth.getTransactionCount(req.user.direccion,function(error, result) {
+            let db=mysql.createConnection(config);
 
-            //Building Transaction Object
-            const txObject={
-                nonce:web3.utils.toHex(result),
-                to:req.body.to,
-                value:web3.utils.toHex(web3.utils.toWei(req.body.amount,'ether')),
-                gasLimit:web3.utils.toHex(21000),
-                gasPrice:web3.utils.toHex(web3.utils.toWei('10','gwei'))
-            }
-                
-            db.query(`SELECT lla_pri FROM llaves_privadas WHERE ide_usu=${req.user.id}`,(err,rows,fields)=>{
+            db.connect();
 
-                if(err) throw err;
+            web3.eth.getTransactionCount(req.user.direccion,function(error, result) {
 
-                field=rows[0].lla_pri.substring(2);
+                //Building Transaction Object
+                const txObject={
+                    nonce:web3.utils.toHex(result),
+                    to:req.body.to,
+                    value:web3.utils.toHex(web3.utils.toWei(req.body.amount,'ether')),
+                    gasLimit:web3.utils.toHex(21000),
+                    gasPrice:web3.utils.toHex(web3.utils.toWei('10','gwei'))
+                }
 
-                let privateKey=Buffer.from(field,'hex');
-                
-                //signin transaction
-                const tx=new TX(txObject);
-                tx.sign(privateKey);
-
-                const serializedTransaction=tx.serialize();
-                const raw='0x'+serializedTransaction.toString('hex');
-
-                web3.eth.sendSignedTransaction(raw,(err,hash)=>{
+                    
+                db.query(`SELECT lla_pri FROM llaves_privadas WHERE ide_usu=${req.user.id}`,(err,rows,fields)=>{
 
                     if(err) throw err;
 
-                    let values={
-                        has_tra:hash,
-                        cod_cri:'ETH',
-                        mon_tra:req.body.amount,
-                        ide_usu:req.user.id
-                    }
+                    field=rows[0].lla_pri.substring(2);
 
-                    db.query('INSERT INTO transacciones SET ?',values,function(err,rows,fields){
-                        
+                    let privateKey=Buffer.from(field,'hex');
+                    
+                    //signin transaction
+                    const tx=new TX(txObject);
+                    tx.sign(privateKey);
+
+                    const serializedTransaction=tx.serialize();
+                    const raw='0x'+serializedTransaction.toString('hex');
+
+                    web3.eth.sendSignedTransaction(raw,(err,hash)=>{
+
                         if(err) throw err;
 
-                        db.end();
-                    })
+                        let values={
+                            has_tra:hash,
+                            cod_cri:'ETH',
+                            mon_tra:req.body.amount,
+                            ide_usu:req.user.id
+                        }
 
-                    req.flash('success',' Su transaccion ha sido enviada con exito, ingrese al menu de transacciones para ver su confirmacion');
-                    res.redirect('/send');
+                        db.query('INSERT INTO transacciones SET ?',values,function(err,rows,fields){
+                            
+                            if(err) throw err;
+
+                            db.end();
+                        })
+
+                        req.flash('success',' Su transaccion ha sido enviada con exito, ingrese al menu de transacciones para ver su confirmacion');
+                        res.redirect('/send');
+                    });
+
                 });
+                
+            }); 
 
-            });
-            
-        }); 
-
-        
+        }
 
     },
 
