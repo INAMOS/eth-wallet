@@ -98,7 +98,7 @@ module.exports={
 
     getToken:function(req,res,next){
 
-        res.render('account/token');
+        res.render('account/token',{SuccessMessage:req.flash('success'),ErrorMessage:req.flash('error')});
 
     },
 
@@ -125,9 +125,15 @@ module.exports={
                 from: req.user.direccion,
                 gas: 1500000,
                 gasPrice: '3000000'
-            }, function(error, transactionHash){  })
-            .on('error', function(error){
+            }, function(error, transactionHash){ 
 
+                req.flash('success','Su Token ha sido creado, revise su historial y compruebe su direccion de token')
+                res.redirect('/token');
+
+            })
+            .on('error', function(error){
+                req.flash('error','Ha ocurrido un error por favor verifica!');
+                res.redirect('/login');
             })
             .on('transactionHash', function(transactionHash){
 
@@ -136,12 +142,13 @@ module.exports={
 
                 let values={
                     dir_mon:receipt.contractAddress,
-                    cod_mon:'ETH',
+                    cod_mon:req.body.code,
                     nom_mon:req.body.name,
                     sup_tot:req.body.supply,
                     dec_mon:req.body.decimals,
                     dir_cre:req.user.direccion
                 }
+
 
                 db.query('INSERT INTO criptomoneda SET ?',values,function(err,rows,fields){
 
@@ -152,24 +159,46 @@ module.exports={
                // contains the new contract address
             
             })
-            .on('confirmation', function(confirmationNumber, receipt){  })
-            .then(function(newContractInstance){
-                console.log(newContractInstance.options.address) // instance with the new contract address
-            });
+            // .on('confirmation', function(confirmationNumber, receipt){  })
+            // .then(function(newContractInstance){
+            //     console.log(newContractInstance.options.address) // instance with the new contract address
+            // });
 
 
         });
-            
+         
+        
        
     },
 
     getSendToken:function(req,res,next){
 
-        res.render('account/SendToken');
+        let db=mysql.createConnection(config);
+
+        db.connect();
+
+        db.query('SELECT dir_mon,cod_mon,nom_mon FROM criptomoneda',(err,rows,fields)=>{
+
+            res.render('account/SendToken',{data:rows});
+        })
+
+       
 
     },
 
     postSendToken:function(req,res,next){
+
+        if(!web3.utils.isAddress(req.body.to)){
+
+            req.flash('error','La direccion que introdujiste es incorrecta, por favor verificala')
+            res.redirect('/sendToken');
+
+        }else{
+
+            const token=new web3.eth.Contract(ABI,req.body.address);
+
+        }
+
 
     },
 }

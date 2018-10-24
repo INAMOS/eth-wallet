@@ -92,12 +92,23 @@
                       
                       <label for="">Monto</label> 
                       <div class="field has-addons">
-                  
+                        
+                          
                         <p class="control">
                           <span class="select">
-                            <select>
-                              <option>ETH</option>
+
+                              <select name="address">
+                              
+                              <% for(let i=0;i < data.length; i++){ %>
+
+                                    <option value= <%=data[i].dir_mon %>>
+                                      <%=data[i].cod_mon%>
+                                    </option>
+
+                              <%  } %>
+
                             </select>
+                            
                           </span>
                         </p>
                         <p class="control is-expanded">
