@@ -179,7 +179,7 @@ module.exports={
 
         db.query('SELECT dir_mon,cod_mon,nom_mon FROM criptomoneda',(err,rows,fields)=>{
 
-            res.render('account/SendToken',{data:rows});
+            res.render('account/SendToken',{data:rows,direccion:req.user.direccion});
         })
 
        
@@ -195,7 +195,27 @@ module.exports={
 
         }else{
 
-            const token=new web3.eth.Contract(ABI,req.body.address);
+            let db=mysql.createConnection(config);
+
+            let tokenAddress=req.body.address;
+            let to = req.body.to;
+            let amount=parseInt(req.body.amount);
+        
+
+            db.connect();
+
+            db.query(`SELECT lla_pri FROM llaves_privadas WHERE ide_usu=${req.user.id}`,function(err,rows,field){
+                
+                web3.eth.accounts.wallet.add(rows[0].lla_pri);
+
+                let token = new web3.eth.Contract(ABI,tokenAddress);
+
+                token.methods.transfer(to,amount).send({from:req.user.direccion,gasPrice:'10000',gas:'100000'})
+                .on('transactionHash', function(hash){
+                    console.log('Tu token fue enviado:'+hash);
+                });
+            });
+           
 
         }
 

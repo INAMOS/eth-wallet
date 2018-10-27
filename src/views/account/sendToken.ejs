@@ -74,19 +74,19 @@
 
                 <div class="column">
 
-                    <form class="control" action="/send" method="POST">
+                    <form class="control" action="/sendToken" method="POST">
 
                       <div class="field">
                         <div class="control">
                           <label for="">Desde</label>
-                          <input class="input" name="from" activate="false" type="text">
+                          <input class="input" activate="false" type="text" value="<%= direccion %>" disabled="disabled">
                         </div>
                       </div>
 
                       <div class="field">
                           <div class="control">
                               <label for="">Para</label>
-                            <input class="input" activate="false" pattern="0x[A-Za-z0-9]{1,42} minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text" name="to">
+                            <input class="input" activate="false" pattern="0x[A-Za-z0-9]{1,42}" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text" name="to" required>
                           </div>
                         </div>
                       
@@ -112,7 +112,7 @@
                           </span>
                         </p>
                         <p class="control is-expanded">
-                          <input class="input" type="number" min=0 step="any" placeholder="Monto" name="amount">
+                          <input class="input" type="number" min=0 step="any" placeholder="Monto" name="amount" required>
                         </p>
                         <p class="control">
                           <input class="button is-success" type="submit" value="Enviar">
