@@ -17,42 +17,22 @@
             </a>
         </div>
 
-       <!--<div class="navbar-menu">
+        <div class="navbar-menu">
           
-            <div class="dropdown is-rigth navbar-end" id="profile" onclick="toggleProfile()">
-                <div class="dropdown-trigger">
-                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                    <span></span>
-                    <span class="icon is-small">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                  <div class="dropdown-content">
-
-                      <hr class="dropdown-divider">
-
-                    <a href="#" class="dropdown-item">
-                      Monedero
-                    </a>
-
-                    <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item">
-                      Perfil
-                    </a>
-                    
-                    <hr class="dropdown-divider">
-                    <a href="/logout" class="dropdown-item">
-                      cerrar sesion
-                    </a>
-                  </div>
-                </div>
+            <div class="navbar-end">
+                <a class="navbar-item" href="/send">
+                  Enviar                
+                </a>
+                <a class="navbar-item" href="/token">
+                  Token
+                </a>
+                <a class="navbar-item" href="/sendToken">
+                    Enviar token
+                </a>
             </div>
+              
+        </div>
 
-        </div>-->
-        
-      
     </nav>
 </div>
 </section>
@@ -120,6 +100,21 @@
                       </div>
                         
                     </form>
+                    <hr>
+                    <% if(SuccessMessage.length > 0) {%>
+                      <div id="notification" class="notification is-success">
+                        <button onclick="closeNoti()" class="delete"></button>
+                        <%= SuccessMessage %>
+                        <div><button class="button">Transacciones</button></div>
+                      </div>  
+                    <% } %>
+
+                    <% if(ErrorMessage.length > 0) {%>
+                      <div id="notification" class="notification is-danger">
+                        <button onclick="closeNoti()" class="delete"></button>
+                        <%= ErrorMessage %>
+                      </div>  
+                    <% } %> 
                 </div>
 
                 <div class="column">
@@ -134,8 +129,15 @@
             </div>
 
           </section>
-            
+            <script>
 
+              const closeNoti= ()=>{
+                let div=document.getElementById('notification');
+                div.style.display="none"
+              }
+
+            </script>
+         
 
         <!--</div>
        

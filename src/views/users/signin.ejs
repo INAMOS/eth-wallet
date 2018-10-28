@@ -1,7 +1,7 @@
 
 <% include ../partials/head %>
 
-<section class="hero is-light">
+<section class="hero is-dark">
     <div class="hero-body">
         <nav class="navbar" role="navigation" aria-label="main navigation">
         
@@ -9,7 +9,7 @@
                 <figure>
                 <img style="width:50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
                 </figure>
-                <a class="navbar-item" style="color:black;font-weight: bold;font-size:15px" href="/">
+                <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/">
                 V-EXCHANGE
                 </a>
 
@@ -21,24 +21,31 @@
                 
             </div>
             <div class="navbar-menu" id="teamList">
-            <div class="navbar-end">
-                <a href="/login" class="navbar-item" style="color: black" href="">
-                    Login
-                </a>
-                <a href="/signup" class="navbar-item" style="color: black" href="">
-                    Registrar
-                </a>
-                
-            </div>
+                    <div class="navbar-end">
+                            <div class="navbar-item">
+                              <div class="buttons">
+                                <a href="/login" class="button is-primary">
+                                  <strong>Ingresar</strong>
+                                </a>
+                                <a href="/signup" class="button is-light">
+                                  Registrarse
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
             </div>
         </nav>
     </div>
 
 </section>
 
+<section class="section"> 
+
+    
     <div class="column is-half is-offset-one-quarter">
-        
-        <% if(message.length >0) {%>
+
+             <% if(message.length >0) {%>
 
             <article class="message is-primary">
                 <div class="message-body">
@@ -46,57 +53,69 @@
                 </div>
             </article>
 
-        <% } %>
-        <div>
+            <% } %>
 
-        </div>
+            <div class="card">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        Login
+                      </p>
+                      <a href="#" class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
         
-        <div class="panel">
-
-        <div class="panel-heading">Login</div>
-
-        <div class="panel-block">
-
-            <form class="control" action="/login" method="POST">
+                            <form class="control" action="/login" method="POST">
+               
+                                <form class="control" action="/login" method="POST">
         
-                <div class="field">
-                <label class="label">Email</label>
-                <div class="control">
-                    <input class="input" name="email" type="email" placeholder="Email" required>
-                </div>
-                </div>
+                                    <div class="field">
+                                    <label class="label">Email</label>
+                                    <div class="control">
+                                        <input class="input" name="email" type="email" placeholder="Email" required>
+                                    </div>
+                                    </div>
+                    
+                                    <div class="field">
+                                    <label class="label">Password</label>
+                                    <div class="">
+                                        <input class="input" name="password" type="password" placeholder="Password" required>
+                                    </div>
+                                    
+                                    </div>
+                    
+                                    <div class="field is-grouped">
+                                        <div class="control">
+                                            <button class="button is-primary">Submit</button>
+                                        </div>  
+                                    </div>
+                                    
+                                </form>
+                    
+                                
+                            </form>
+                        
+                      </div>
+                    </div>
+                   
+                  </div>
 
-                <div class="field">
-                <label class="label">Password</label>
-                <div class="">
-                    <input class="input" name="password" type="password" placeholder="Password" required>
-                </div>
-                
-                </div>
+                    <% if(authMessage.length >0) {%>
 
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-primary">Submit</button>
-                    </div>  
-                </div>
-                
-            </form>
+                    <article class="message is-danger">
+                        <div class="message-body">
+                        <%= authMessage %>
+                        </div>
+                    </article>
 
-
-        </div>
-       
-        </div>
-
-        <% if(authMessage.length >0) {%>
-
-            <article class="message is-danger">
-                <div class="message-body">
-                  <%= authMessage %>
-                </div>
-            </article>
-
-        <% } %>
+                <% } %>
     </div>
+
+</section>
    
     
 <% include ../partials/footer %>

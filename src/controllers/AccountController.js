@@ -8,13 +8,6 @@ module.exports={
 
     wallet:function(req,res,next){
 
-        /*db=mysql.createConnection(config);
-
-        db.connect();
-
-
-        db.query(`SELECT direccion FROM usuarios WHERE email=`);*/
-
         res.render('wallet',{user:req.user});
         
     },
@@ -179,8 +172,9 @@ module.exports={
 
         db.query('SELECT dir_mon,cod_mon,nom_mon FROM criptomoneda',(err,rows,fields)=>{
 
-            res.render('account/SendToken',{data:rows,direccion:req.user.direccion});
-        })
+            res.render('account/SendToken',{data:rows,direccion:req.user.direccion,SuccessMessage:req.flash('success'),ErrorMessage:req.flash('error')});
+        
+        }) 
 
        
 
@@ -212,10 +206,11 @@ module.exports={
 
                 token.methods.transfer(to,amount).send({from:req.user.direccion,gasPrice:'10000',gas:'100000'})
                 .on('transactionHash', function(hash){
-                    console.log('Tu token fue enviado:'+hash);
+                    req.flash('success','Su token ha sido enviado correctamente,revise su historial de transsacciones para ver confirmacion')
+                    res.redirect('/sendToken');
                 });
             });
-           
+            
 
         }
 
