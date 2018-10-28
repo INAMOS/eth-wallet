@@ -11,7 +11,7 @@
             <figure>
               <img style="width:50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
             </figure>
-            <a class="navbar-item" style="color:black;font-weight: bold;font-size:15px" href="/">
+            <a class="navbar-item" style="color:dark;font-weight: bold;font-size:15px" href="/">
               <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
               V-EXCHANGE
             </a>
@@ -20,7 +20,7 @@
         <div class="navbar-menu">
 
           <div class="navbar-end">
-              <div class="navbar-item has-dropdown is-hoverable">
+              <div class="navbar-item has-dropdown is-hoverable" style="color:white">
                   <a class="navbar-link">
                     <%= user.nombre %>
                   </a>
@@ -45,38 +45,6 @@
             
         </div>
           
-            <!-- <div class="dropdown is-rigth navbar-end" id="profile" onclick="toggleProfile()">
-                <div class="dropdown-trigger">
-                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                    <span><%= user.nombre %></span>
-                    <span class="icon is-small">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                  <div class="dropdown-content">
-
-                    <a href="/wallet" class="dropdown-item">
-                      Monedero
-                    </a>
-
-                    <hr class="dropdown-divider">
-                    
-                    <a href="#" class="dropdown-item">
-                      Perfil
-                    </a>
-      
-                    <hr class="dropdown-divider">
-
-                    <a href="/logout" class="dropdown-item">
-                      cerrar sesion
-                    </a>
-                    
-                  </div>
-                </div>
-            </div> -->
-
         </div>
         
       
@@ -84,25 +52,35 @@
 </div>
 </section>
 
+<section class="section">
+
     <div class="column is-half is-offset-one-quarter">
+
+        <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                Bienvenido
+              </p>
+              <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </a>
+            </header>
+            <div class="card-content">
+              <div class="content">
+
+                Bienvenido <%= user.nombre %>
+  
+                
+              </div>
+            </div>
+           
+          </div>
         
-
-        <div>
-
-        </div>
-        
-        <div class="panel">
-
-        <div class="panel-heading">Bienvenido</div>
-
-        <div class="panel-block">
-
-            <h1>Bienvenido <%= user.nombre %></h1>
-
-        </div>
-       
-        </div>
     </div>
+
+  </section>
    
     
 <% include partials/footer %>
