@@ -3,75 +3,71 @@
 
 
 <section class="hero is-dark">
-<div class="hero-body">
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-    
-        <div class="navbar-brand">
-            <figure>
-              <img style="width: 50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
-            </figure>
-            <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/">
-              <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
-              V-EXCHANGE
-            </a>
-        </div>
+  <div class="hero-body">
 
-        <div class="navbar-menu">
-          
-            <div class="navbar-end">
-                <a class="navbar-item" href="/send">
-                  Enviar                
-                </a>
-                <a class="navbar-item" href="/token">
-                  Token
-                </a>
-                <a class="navbar-item" href="/sendToken">
-                    Enviar token
-                </a>
-            </div>
-              
-        </div>
+      <% include ../partials/nav %>
 
-       
-        
-      
-    </nav>
-</div>
+  </div>
+
 </section>
 
-          <section class="section" style="background:rgb(245,245,245)">
+<section class="section" style="background:rgb(245,245,245)">
 
-            <div class="container">
+  <div class="container">
 
-              <h1 class="title">Enviar Fondos</h1>
-              <div class="columns">
+    <h1 class="title">Enviar Fondos</h1>
+      
+    <div class="columns">
 
-                <div class="column">
+      <div class="column">
 
-                    <form class="control" action="/send" method="POST">
+        <form class="control" action="/send" method="POST">
 
-                      <div class="field">
-                        <div class="control">
-                          <label for="">Desde</label>
-                          <input class="input" name="from" activate="false" type="text" value='<%= direccion %>'  disabled="disabled">
-                        </div>
-                      </div>
+          <div class="field">
+                        
+            <div class="control">
+                          
+              <label for="">Desde</label>
+                          
+              <!-- <input class="input" name="from" activate="false" type="text" value='<%= direccion %>'  disabled="disabled"> -->
+              <article class="message is-grey"> 
+                  <div class="message-body">
+                      <p>
+                        <strong><%= direccion %></strong>
+                      </p>
+                </div>
+              </article>        
+            </div>
+                      
+          </div>
 
-                      <div class="field">
-                          <div class="control">
-                              <label for="">Para</label>
-                            <input class="input" activate="false" pattern="0x[A-Za-z0-9]{1,42}" minlength="42" maxlength="42" title="Direccion incorrecta por favor introduzca una direccion valida" type="text" name="to" required>
-                          </div>
-                      </div>
+                      
+          <div class="field">
+                          
+            <div class="control">
+                              
+              <label for="">Para</label>
+                            
+              <input class="input" activate="false" pattern="0x[A-Za-z0-9]{1,42}" minlength="42" maxlength="42" title="Direccion incorrecta por favor introduzca una direccion valida" type="text" name="to" required>
+                          
+            </div>
+                      
+          </div>
 
-                      <div class="field">
-                        <div class="control">
-                            <label for="">Monto</label>
-                            <input class="input" type="number" min=0 step="any" placeholder="Monto" name="amount" required>  </div>
-                      </div>
+                      
+          <div class="field">
+                        
+            <div class="control">
+                            
+              <label for="">Monto</label>
+                            
+              <input class="input" type="number" min=0 step="any" placeholder="Monto" name="amount" required>  </div>
+                      
+            </div>
 
-                      <button id="ButtonModal" class="button is-success">Enviar</button> 
+                      
+            <button id="ButtonModal" class="button is-success">Enviar</button> 
                         <!-- Modal -->
                 
                       <div id="modal" class="modal">
@@ -122,18 +118,20 @@
 
                 </div>
 
-                
+                <div class="column">
+                    <div>
+    
+                    </div>
+                  </div>
                   
               </div>
+
+             
 
               
             </div>
 
-            <div class="column">
-                <div>
-
-                </div>
-              </div>
+            
 
           </section>
             

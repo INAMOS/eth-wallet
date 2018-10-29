@@ -8,15 +8,16 @@ module.exports={
 
     wallet:function(req,res,next){
 
-        res.render('wallet',{user:req.user});
-        
+        res.render('wallet',{user:req.user}); 
+         
     },
 
     getSend:function(req,res,next){
         
         res.render('account/send',{direccion:req.user.direccion,SuccessMessage:req.flash('success'),ErrorMessage:req.flash('error')});
 
-    },
+    }, 
+    
 
     postSend:function(req,res,next){
 
@@ -172,7 +173,8 @@ module.exports={
 
         db.query('SELECT dir_mon,cod_mon,nom_mon FROM criptomoneda',(err,rows,fields)=>{
 
-            res.render('account/SendToken',{data:rows,direccion:req.user.direccion,SuccessMessage:req.flash('success'),ErrorMessage:req.flash('error')});
+            res.render('account/sendToken',{data:rows,direccion:req.user.direccion,SuccessMessage:req.flash('success'),ErrorMessage:req.flash('error')});
+            db.end();
         
         }) 
 
@@ -208,6 +210,7 @@ module.exports={
                 .on('transactionHash', function(hash){
                     req.flash('success','Su token ha sido enviado correctamente,revise su historial de transsacciones para ver confirmacion')
                     res.redirect('/sendToken');
+                    db.end();
                 });
             });
             

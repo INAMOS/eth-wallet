@@ -1,12 +1,12 @@
 <% include partials/head %>
    
-  <section class="hero is-dark">
+<section class="hero is-dark">
       <div class="hero-body">
           <nav class="navbar" role="navigation" aria-label="main navigation">
           
               <div class="navbar-brand">
                   <figure>
-                    <img style="width: 50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
+                    <img style="width: 50px" src="/images/logo.png" alt="ethereum-logo">
                   </figure>
                   <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/login">
                     V-EXCHANGE
@@ -19,56 +19,56 @@
                   </a>
                   
               </div>
-              <div class="navbar-menu" id="teamList">
+            <div class="navbar-menu" id="teamList">
                 
                 <div class="navbar-end">
-                        <div class="navbar-item">
-                          <div class="buttons">
+                    <div class="navbar-item">
+                        <div class="buttons">
                             <a href="/login" class="button is-primary">
                               <strong>Ingresar</strong>
                             </a>
                             <a href="/signup" class="button is-light">
                               Registrarse
                             </a>
-                          </div>
                         </div>
+                    </div>
                 </div>
-                </div>
+            </div>
           </nav>
       </div>
-    </section>
+</section>
 
-    <section class="section coin-watcher">
-            <div class="container is-fluid">
+<section class="section coin-watcher">
+    <div class="container is-fullwidth">
                 
-                <h1>Principales criptomonedas del mercado</h1>
-                    <table class="table container">
-                        <thead class="thead">
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Simbolo</th>
-                                <th>Valor($USD)</th>
-                                <th>Valor(BTC)</th>
-                            </tr>
-                        </thead>
+        <h1 class="title">Principales criptomonedas del mercado</h1>
+            <table class="table container">
+                <thead class="thead">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Simbolo</th>
+                        <th>Valor($USD)</th>
+                        <th>Valor(BTC)</th>
+                    </tr>
+                </thead>
                         
-                        <tbody class="tbody">
+                <tbody class="tbody">
                                 
-                                <% let i=0;for(let prop in cripto.data){ %>
-                                    <tr>
-                                        <td> <%= ++i %></td>
-                                        <td><img src="https://s2.coinmarketcap.com/static/img/coins/16x16/<%= prop %>.png" alt=""> <%= cripto.data[prop].name %></td>
-                                        <td><%= cripto.data[prop].symbol %></td>
-                                        <td><%= cripto.data[prop].quotes.USD.price %></td>
-                                        <td><%= cripto.data[prop].quotes.BTC.price%></td>
-                                    </tr>
-                                <%  } %>
-                        </tbody>
+                    <% let i=0;for(let prop in cripto.data){ %>
+                        <tr>
+                            <td> <%= ++i %></td>
+                            <td><img src="https://s2.coinmarketcap.com/static/img/coins/16x16/<%= prop %>.png" alt=""> <%= cripto.data[prop].name %></td>
+                            <td><%= cripto.data[prop].symbol %></td>
+                            <td><%= Math.round(cripto.data[prop].quotes.USD.price * 100)/100 %></td>
+                            <td><%= cripto.data[prop].quotes.BTC.price %></td>
+                        </tr>
+                    <%  } %>
+                </tbody>
             
-                    </table>
-                </div>
-    </section>
+            </table>
+    </div>
+</section>
     
 
 
