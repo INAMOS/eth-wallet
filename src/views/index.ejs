@@ -9,7 +9,7 @@
                     <img style="width: 50px" src="/images/logo.png" alt="ethereum-logo">
                   </figure>
                   <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/login">
-                    V-EXCHANGE
+                    V-WALLET
                   </a>
 
                   <a role="button" class="navbar-burger" onclick="toggleBurger()" id="burguer" aria-label="menu" aria-expanded="true">
@@ -41,8 +41,8 @@
 <section class="section coin-watcher">
     <div class="container is-fullwidth">
                 
-        <h1 class="title">Principales criptomonedas del mercado</h1>
-            <table class="table container">
+        <h1 class="title" style="text-align:center">Top 10 criptomonedas del Mercado</h1>
+            <table class="table is-fullwidth is-striped is-hoverable">
                 <thead class="thead">
                     <tr>
                         <th>#</th>
@@ -60,7 +60,7 @@
                             <td> <%= ++i %></td>
                             <td><img src="https://s2.coinmarketcap.com/static/img/coins/16x16/<%= prop %>.png" alt=""> <%= cripto.data[prop].name %></td>
                             <td><%= cripto.data[prop].symbol %></td>
-                            <td><%= Math.round(cripto.data[prop].quotes.USD.price * 100)/100 %></td>
+                            <td><%= Math.round(cripto.data[prop].quotes.USD.price * 100)/100 %><strong>$</strong></td>
                             <td><%= cripto.data[prop].quotes.BTC.price %></td>
                         </tr>
                     <%  } %>
@@ -69,7 +69,32 @@
             </table>
     </div>
 </section>
-    
+
+<section class="section">
+
+    <div class="tile is-ancestor">
+        
+        <div class="tile is-parent is-vertical">
+
+            <div class="tile is-6 is-child box">
+                <p class="title">Ethereum</p>
+                <p class="subtitle">Desarrollado sobre Ethereum</p>
+                <div class="content">
+                    Ethereum es una plataforma open source, descentralizada que permite la creación de acuerdos de contratos inteligentes entre pares, basada en el modelo blockchain.​ Cualquier desarrollador puede crear y publicar aplicaciones distribuidas que realicen contratos inteligentes.
+                </div>
+            </div>
+            <article class="tile is-child notification i-white">
+                    <p class="title">Middle tile</p>
+                    <p class="subtitle">With an image</p>
+                    <figure class="image is-4by3">
+                      <img src="https://bulma.io/images/placeholders/640x480.png">
+                    </figure>
+                  </article>
+        </div>
+        
+    </div>
+
+</section>
 
 
 <% include partials/footer %>
