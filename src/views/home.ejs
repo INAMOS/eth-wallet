@@ -2,25 +2,30 @@
 <% include partials/head %>
 
 
-<section class="hero is-ligth">
+<section class="hero is-dark">
 <div class="hero-body">
 
     <nav class="navbar" role="navigation" aria-label="main navigation">
     
         <div class="navbar-brand">
             <figure>
-              <img style="width:50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
+              <img style="width:50px" src="/images/ethereum-grey.png" alt="ethereum-logo">
             </figure>
             <a class="navbar-item" style="color:dark;font-weight: bold;font-size:15px" href="/">
               <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
-              V-EXCHANGE
+              V-WALLET
+            </a>
+            <a role="button" class="navbar-burger" onclick="toggleBurger()" id="burguer" aria-label="menu" aria-expanded="true">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </a>
         </div>
 
-        <div class="navbar-menu">
+        <div class="navbar-menu" id="teamList">
 
           <div class="navbar-end">
-              <div class="navbar-item has-dropdown is-hoverable" style="color:white">
+              <div class="navbar-item has-dropdown is-hoverable" style="color:dark">
                   <a class="navbar-link">
                     <%= user.nombre %>
                   </a>
@@ -40,7 +45,23 @@
                       Cerrar Sesion
                     </a>
                   </div>
-                </div>
+                </div> 
+                <!-- <div class="dropdown is-hoverable">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                        <span>Hover me</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                      <div class="dropdown-content">
+                        <div class="dropdown-item">
+                          <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+                        </div>
+                      </div>
+                    </div>-->
           </div>
             
         </div>
@@ -61,24 +82,52 @@
               <p class="card-header-title">
                 Bienvenido
               </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
             </header>
             <div class="card-content">
               <div class="content">
 
                 Bienvenido <%= user.nombre %>
-  
-                
+              
               </div>
             </div>
            
           </div>
         
     </div>
+
+  </section>
+
+
+  <section id="transactions" class="section">
+
+      <div class="container is-fullwidth">
+                
+          <h1 class="title" style="text-align:center">Transacciones</h1>
+              <table class="table is-fullwidth is-striped is-hoverable is-bordered">
+                  <thead class="thead">
+                      <tr>
+                          <th>Codigo</th>
+                          <th>Monto</th>
+                          <th>Fecha</th>
+                          <th>Hash de Transaccion</th>
+                      </tr>
+                  </thead>
+                          
+                  <tbody class="tbody">
+                      <% data.forEach(row=>{ %>
+                        <tr>
+                            <td><%= row.cod_cri %></td>
+                            <td><%= row.mon_tra %></td>
+                            <td><%= row.fec_tra %></td>
+                            <td><%= row.has_tra %></td>
+                        </tr>
+                    <%  }) %>
+    
+                  </tbody>
+              
+              </table>
+      </div>
+
 
   </section>
    

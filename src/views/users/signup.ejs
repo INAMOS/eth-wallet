@@ -7,7 +7,7 @@
     
         <div class="navbar-brand">
             <figure>
-              <img style="width: 50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
+              <img style="width: 50px" src="/images/ethereum-grey.png" alt="ethereum-logo">
             </figure>
             <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/">
               <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
@@ -55,32 +55,52 @@
                     <form class="control" action="/signup" method="POST">
        
                         <div class="field">
-                            <label class="label">Email</label>
-                            <div class="control">
-                                <input  class="input" type="email" name="email" placeholder="Email" required>
+                                <label class="label" for="to">Email</label>
+                                <p class="control has-icons-left">
+                                        <input class="input" name="email" type="email" placeholder="Email" required>
+                   
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                
+                                </p>
                             </div>
-                        </div>
+            
+                    
+                        <div class="field">
+                                <label class="label" for="nombre">Nombre</label>
+                                <p class="control has-icons-left">
+                                        <input name="nombre" class="input" type="text" placeholder="Nombre" required>
+                                    <span class="icon is-small is-left">
+                                    <i class="fas fa-users"></i>
+                                </span>
+                                
+                                </p>
+                            </div>
+            
+                      
+                        
+                        <div class="field">
+                                <label class="label" for="usuario">Usuario</label>
+                                <p class="control has-icons-left">
+                                        <input name="usuario" class="input" type="text" placeholder="Usuario" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                
+                                </p>
+                            </div>
             
                         <div class="field">
-                            <label class="label">Nombre</label>
-                            <div class="control">
-                                <input name="nombre" class="input" type="text" placeholder="Nombre" required>
+                                <label class="label" for="password">Password</label>
+                                <p class="control has-icons-left">
+                                        <input class="input" name="password" type="password" placeholder="Password" minlength="6" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-key"></i>
+                                </span>
+                                
+                                </p>
                             </div>
-                        </div>
-            
-                        <div class="field">
-                            <label class="label">Usuario</label>
-                            <div class="control">
-                                <input name="usuario" class="input" type="text" placeholder="Usuario" required>
-                            </div>
-                        </div>
-            
-                        <div class="field">
-                            <label class="label">Password</label>
-                            <div class="control">
-                                <input name="password" class="input" type="password" placeholder="Password" minlength="6" required>
-                            </div>
-                        </div>
             
                         <div class="field is-grouped">
                             <div class="control">

@@ -7,7 +7,7 @@
         
             <div class="navbar-brand">
                 <figure>
-                <img style="width:50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">
+                <img style="width:50px" src="/images/ethereum-grey.png" alt="ethereum-logo">
                 </figure>
                 <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/">
                 V-EXCHANGE
@@ -51,6 +51,7 @@
                   <%= message %>
                 </div>
             </article>
+            <hr>
 
             <% } %>
 
@@ -66,25 +67,36 @@
                             <form class="control" action="/login" method="POST">
                
                                 <form class="control" action="/login" method="POST">
+
+                                                
+                                <div class="field">
+                                        <label class="label" for="to">Email</label>
+                                        <p class="control has-icons-left">
+                                                <input class="input" name="email" type="email" placeholder="Email" required>
+                           
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        
+                                        </p>
+                                    </div>
+
+                                    <div class="field">
+                                            <label class="label" for="password">Password</label>
+                                            <p class="control has-icons-left">
+                                                    <input class="input" name="password" type="password" placeholder="Password" minlength="6" required>
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-key"></i>
+                                            </span>
+                                            
+                                            </p>
+                                        </div>
         
-                                    <div class="field">
-                                    <label class="label">Email</label>
-                                    <div class="control">
-                                        <input class="input" name="email" type="email" placeholder="Email" required>
-                                    </div>
-                                    </div>
                     
-                                    <div class="field">
-                                    <label class="label">Password</label>
-                                    <div class="">
-                                        <input class="input" name="password" type="password" placeholder="Password" minlengt="6" required>
-                                    </div>
-                                    
-                                    </div>
                     
                                     <div class="field is-grouped">
                                         <div class="control">
-                                            <button class="button is-primary">Submit</button>
+                                            <button class="button is-primary">Ingresar</button>
                                         </div>  
                                     </div>
                                     
@@ -99,12 +111,12 @@
                 </div>
 
                 <% if(authMessage.length >0) {%>
-
-                    <article class="message is-danger">
+                <hr>
+                <article class="message is-danger">
                         <div class="message-body">
                         <%= authMessage %>
                         </div>
-                    </article>
+                </article>
 
                 <% } %>
     </div>

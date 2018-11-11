@@ -1,4 +1,7 @@
 const request=require('request');
+const mysql=require('mysql');
+const config=require('.././config/Database/database');
+
 
 module.exports={
 
@@ -20,11 +23,24 @@ module.exports={
 
     home:function(req,res,next){
 
-        
-       res.render('home',{
-            isAuthenticated:req.isAuthenticated(),
-            user:req.user
+        let db=mysql.createConnection(config);
+
+        db.connect();
+
+        db.query(`SELECT * FROM transacciones WHERE ide_usu=${req.user.id}`,(err,rows,fields)=>{
+
+
+            res.render('home',{
+                isAuthenticated:req.isAuthenticated(),
+                user:req.user,
+                data:rows
+            });
+
+
         });
+
+        
+       
 
 
     }
