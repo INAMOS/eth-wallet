@@ -67,7 +67,7 @@ module.exports={
                     req.flash('info','Se ha registrado Correctamente, ya puede iniciar sesion');
                     res.redirect('/login');
                     
-                   
+                     
                 });
 
             }

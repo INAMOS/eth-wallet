@@ -38,17 +38,18 @@
 </section>
 
 <section class="section coin-watcher">
+    
     <div class="container is-fullwidth">
                 
         <h1 class="title" style="text-align:center">Top 10 criptomonedas del Mercado</h1>
             <table class="table is-fullwidth is-striped is-hoverable">
                 <thead class="thead">
                     <tr>
-                        <th>#</th>
+                        <th>Nº</th>
                         <th>Nombre</th>
                         <th>Simbolo</th>
-                        <th>Valor($USD)</th>
-                        <th>Valor(BTC)</th>
+                        <th>$USD</th>
+                        <th>BTC</th>
                     </tr>
                 </thead>
                         
@@ -59,7 +60,7 @@
                             <td> <%= ++i %></td>
                             <td><img src="https://s2.coinmarketcap.com/static/img/coins/16x16/<%= prop %>.png" alt=""> <%= cripto.data[prop].name %></td>
                             <td><%= cripto.data[prop].symbol %></td>
-                            <td><%= Math.round(cripto.data[prop].quotes.USD.price * 100)/100 %><strong>$</strong></td>
+                            <td><strong>$</strong><%= Math.round(cripto.data[prop].quotes.USD.price * 100)/100 %></td>
                             <td><%= cripto.data[prop].quotes.BTC.price %></td>
                         </tr>
                     <%  } %>

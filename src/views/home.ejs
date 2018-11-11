@@ -12,8 +12,7 @@
               <img style="width:50px" src="/images/ethereum-grey.png" alt="ethereum-logo">
             </figure>
             <a class="navbar-item" style="color:dark;font-weight: bold;font-size:15px" href="/">
-              <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
-              V-WALLET
+                V-WALLET
             </a>
             <a role="button" class="navbar-burger" onclick="toggleBurger()" id="burguer" aria-label="menu" aria-expanded="true">
                 <span aria-hidden="true"></span>
@@ -25,12 +24,15 @@
         <div class="navbar-menu" id="teamList">
 
           <div class="navbar-end">
-              <div class="navbar-item has-dropdown is-hoverable" style="color:dark">
-                  <a class="navbar-link">
+
+              <div id="profile" class="navbar-item has-dropdown is-hoverable">
+
+                  <a class="navbar-link" style="color:white">
                    <strong> <%= user.nombre %> </strong> 
                   </a>
           
-                  <div class="navbar-dropdown">
+                  <div id="drop" class="navbar-dropdown" style="color:rgb(54,54,54);">
+                    
                     <a href="/wallet" class="navbar-item">
                       <span class="icons">
                           <i class="fas fa-wallet"></i>
@@ -48,6 +50,15 @@
                             Perfil
                         </strong>
                     </a>
+
+                    <a class="navbar-item">
+                        <span class="icons">
+                            <i class="fas fa-cogs"></i>
+                        </span>
+                        <strong>
+                            Configuracion
+                        </strong>
+                    </a>
                    
                     <hr class="navbar-divider">
                     <a href="/logout" class="navbar-item">
@@ -61,6 +72,7 @@
                       
                     </a>
                   </div>
+
                 </div> 
                 <!-- <div class="dropdown is-hoverable">
                     <div class="dropdown-trigger">

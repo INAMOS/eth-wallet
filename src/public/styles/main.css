@@ -16,3 +16,23 @@ html,body{
 .links:hover{
     color:white;
 }
+
+.navbar-link::after {
+    border-color: white;
+    margin-top: -0.375em;
+    right: 1.125em;
+}
+
+#profile:hover{
+
+    color:rgb(54,54,54);
+
+}
+
+
+#drop a:hover{
+
+    background-color:rgb(54,54,54);
+    color:white;
+
+}
