@@ -1,0 +1,126 @@
+
+<% include ../partials/head %>
+
+
+<section class="hero is-dark">
+
+  <div class="hero-body">
+
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+    
+            <div class="navbar-brand">
+                <figure>
+                  <!-- <img style="width: 50px" src="/images/ethereum-2458552_960_720.png" alt="ethereum-logo">-->
+                  <!-- <img style="width:50px" src="/images/ethereum-white.png" alt="ethereum-logo"> -->
+                  <img style="width:50px" src="/images/ethereum-grey.png" alt="ethereum-logo">
+                </figure>
+                <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/">
+                  V-WALLET
+                </a>
+        
+                <a role="button" class="navbar-burger" onclick="toggleBurger()" id="burguer" aria-label="menu" aria-expanded="true">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        
+            <div class="navbar-menu" id="teamList">
+              
+                <div class="navbar-end">
+                    <a class="navbar-item" href="/home">
+                        <span class="icon">
+                                <i class="fas fa-home"></i>
+                        </span>
+                        <strong>  Home </strong>
+                                
+                    </a>
+                </div>
+                  
+            </div>
+        
+        </nav>
+
+  </div>
+
+</section>
+
+<section class="section is-medium" style="background:rgb(245,245,245)">
+
+    <div class="container">
+
+    <h1 class="title">Subir archivo</h1>
+      
+        <div class="columns">
+
+            <div class="column">  
+
+                <form class="control" action="/upload" method="POST" enctype="multipart/form-data">
+
+                    <div class="file has-name">     
+                        <label class="file-label">
+                        <input class="file-input" type="file" name="file">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Elija un archivo…
+                            </span>
+                        </span>
+                        <span class="file-name">
+                            tabla.txt
+                        </span>
+                        </label>
+                    </div>
+                    <hr>                                  
+                    <button id="ButtonModal" class="button is-success">Respaldar</button> 
+
+                </form>
+
+                <% if(err.length >0) {%>
+                    <hr>
+                    <article class="message is-danger">
+                            <div class="message-body">
+                            <%= err %>
+                            </div>
+                    </article>
+        
+                <% } %>
+
+                
+                <% if(succ.length >0) {%>
+                    <hr>
+                    <article class="message is-primary">
+                            <div class="message-body">
+                            <%= succ %>
+                            </div>
+                    </article>
+        
+                <% } %>
+            </div> 
+        </div>      
+    </div>
+
+            
+</section>
+            
+
+<script>
+
+    const closeModal=()=>{
+        let modal=document.getElementById('modal');
+        modal.classList.remove('is-active')
+    }
+              
+    const closeNoti= ()=>{
+        let div=document.getElementById('notification');
+        div.style.display="none"
+    }
+         
+             
+</script>
+   
+   
+    
+<% include ../partials/footer %>

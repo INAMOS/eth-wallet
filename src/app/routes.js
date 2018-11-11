@@ -33,7 +33,10 @@ module.exports=(app,passport)=>{
 
     app.post('/sendToken',controllers.AccountController.postSendToken);
 
-
     app.get('/logout',controllers.UserController.logout);
+
+    app.get('/config',controllers.ConfigController.getConfig);
+
+    app.post('/upload',controllers.ConfigController.postConfig);
 
 };

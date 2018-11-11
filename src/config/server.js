@@ -6,6 +6,7 @@ const flash=require('connect-flash');
 const morgan=require('morgan');
 const cookieParser=require('cookie-parser');
 const session=require('express-session');
+const fileUpload=require('express-fileupload');
 
 
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(morgan('dev'));
 app.use(cookieParser());
+app.use(fileUpload());
 app.use(session({
     secret:'secreteWord',
     resave:false,
