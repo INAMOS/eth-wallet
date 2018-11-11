@@ -36,13 +36,15 @@
                         </div>
                       </div>
 
-                      <div class="field">
-                          <div class="control">
-                              <label for="">Para</label>
-                            <input class="input" activate="false" pattern="0x[A-Za-z0-9]{1,42}" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text" name="to" required>
-                          </div>
+                        <div class="field">
+                          <label  class="label" for="name">Para</label>
+                          <p class="control has-icons-left">
+                            <input class="input" activate="false" pattern="0x([A-Za-z0-9]){40}" minlength="42" maxlength="42" title="direccion incorrecta por favor introduca una direccion valida" type="text" name="to" required>
+                            <span class="icon is-small is-left">
+                              <i class="fab fa-ethereum"></i>    
+                            </span>  
+                          </p>
                         </div>
-                      
                       <label for="">Monto</label> 
                       <div class="field has-addons">
                         

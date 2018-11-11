@@ -20,33 +20,48 @@
 
                     <form class="control" action="/token" method="POST">
 
-                      <div class="field">
-                        <div class="control">
-                          <label for="">Nombre de Token</label>
+                     <div class="field">
+                        <label  class="label" for="name">Nombre de Token</label>
+                        <p class="control has-icons-left">
                           <input class="input" name="name" maxlength="50" activate="false" type="text" required>
-                        </div>
+                          <span class="icon is-small is-left">
+                            <i class="fab fa-gg-circle"></i>    
+                          </span>  
+                        </p>
                       </div>
 
                       <div class="field">
-                          <div class="control">
-                              <label for="">Codigo</label>
-                            <input class="input" name="code" activate="false" minlength="3" maxlength="5" title="" type="text" required>
-                          </div>
-                        </div>
+                        <label  class="label" for="">Codigo</label>
+                        <p class="control has-icons-left">
+                          <input class="input" name="code" activate="false" minlength="3" maxlength="5" title="" type="text" required>
+                       <span class="icon is-small is-left">
+                        <i class="fas fa-project-diagram"></i>
+                          </span>  
+                        </p>
+                      </div>
+                      
+                      <div class="field">
+                        <label  class="label" for="">Decimales</label>
+                        <p class="control has-icons-left">
+                          <input class="input" name="decimals" min="1" max="18" activate="false" pattern="[1-9]{1,18}" type="number" required>
+                               <span class="icon is-small is-left">
+                                <i class="fas fa-chart-pie"></i> 
+                          </span>  
+                        </p>
+                      </div>
 
-                        <div class="field">
-                            <div class="control">
-                                <label for="">Decimales</label>
-                              <input class="input" name="decimals" min="1" max="18" activate="false" pattern="[1-9]{1,18}" type="number" required>
-                            </div>
-                        </div>
 
-                        <div class="field">
-                            <div class="control">
-                                <label for="">Cantidad total</label>
-                              <input class="input" name="supply" activate="false" min="1"  type="number" required>
-                            </div>
-                        </div>
+                      <div class="field">
+                        <label  class="label" for="">Cantidad total</label>
+                        <p class="control has-icons-left">
+                          <input class="input" name="supply" activate="false" min="1"  type="number" required>
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-piggy-bank"></i>  
+                          </span>  
+                        </p>
+                      </div>
+
+                      
 
                         <p class="control">
                           <input class="button is-success" type="submit" value="Crear">
