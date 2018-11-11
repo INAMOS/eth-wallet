@@ -27,22 +27,38 @@
           <div class="navbar-end">
               <div class="navbar-item has-dropdown is-hoverable" style="color:dark">
                   <a class="navbar-link">
-                    <%= user.nombre %>
+                   <strong> <%= user.nombre %> </strong> 
                   </a>
           
                   <div class="navbar-dropdown">
                     <a href="/wallet" class="navbar-item">
-                      Wallet
+                      <span class="icons">
+                          <i class="fas fa-wallet"></i>
+                      </span>
+                    <strong>
+                        Wallet
+                    </strong>
+                      
                     </a>
                     <a class="navbar-item">
-                      Perfil
+                        <span class="icons">
+                            <i class="fas fa-user-circle"></i>
+                        </span>
+                        <strong>
+                            Perfil
+                        </strong>
                     </a>
-                    <a class="navbar-item">
-                      Contact
-                    </a>
+                   
                     <hr class="navbar-divider">
                     <a href="/logout" class="navbar-item">
-                      Cerrar Sesion
+
+                      <span class="icons">
+                          <i class="fas fa-times-circle"></i>
+                      </span>
+                    <strong>
+                        Cerrar Sesion
+                    </strong>
+                      
                     </a>
                   </div>
                 </div> 

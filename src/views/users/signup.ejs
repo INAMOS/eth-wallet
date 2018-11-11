@@ -11,7 +11,7 @@
             </figure>
             <a class="navbar-item" style="color:white;font-weight: bold;font-size:15px" href="/">
               <!--<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">-->
-              V-EXCHANGE
+              V-WALLET
             </a>
 
             <a role="button" class="navbar-burger" onclick="toggleBurger()" id="burguer" aria-label="menu" aria-expanded="true">
@@ -114,6 +114,16 @@
             </div>
            
           </div>
+
+          <% if(err.length >0) {%>
+            <hr>
+            <article class="message is-danger">
+                    <div class="message-body">
+                    <%= err %>
+                    </div>
+            </article>
+
+            <% } %>
         </div>
 
 </section>
