@@ -21,9 +21,17 @@ module.exports={
     },
 
     getSend:function(req,res,next){
-        
-        res.render('account/send',{direccion:req.user.direccion,SuccessMessage:req.flash('success'),ErrorMessage:req.flash('error')});
 
+        web3.eth.getBalance(req.user.direccion, function(error, result) {
+
+            let val=web3.utils.fromWei(result,'ether');
+
+            res.render('account/send',{direccion:req.user.direccion,balance:val,SuccessMessage:req.flash('success'),ErrorMessage:req.flash('error')});
+
+            
+        });
+        
+     
     }, 
     
 
@@ -155,7 +163,6 @@ module.exports={
                 db.query('INSERT INTO criptomoneda SET ?',values,function(err,rows,fields){
 
                     if(err) throw err;
-                    db.end();
 
                 });
                // contains the new contract address

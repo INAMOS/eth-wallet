@@ -19,23 +19,23 @@ module.exports=(app,passport)=>{
         failureFlash:true
     }));
 
-    app.get('/wallet',controllers.AccountController.wallet);
+    app.get('/wallet',AuthMiddleware.isLogged,controllers.AccountController.wallet);
 
-    app.get('/send',controllers.AccountController.getSend);
+    app.get('/send',AuthMiddleware.isLogged,controllers.AccountController.getSend);
 
     app.post('/send',controllers.AccountController.postSend);
 
-    app.get('/token',controllers.AccountController.getToken);
+    app.get('/token',AuthMiddleware.isLogged,controllers.AccountController.getToken);
     
     app.post('/token',controllers.AccountController.postToken);
 
-    app.get('/sendToken',controllers.AccountController.getSendToken);
+    app.get('/sendToken',AuthMiddleware.isLogged,controllers.AccountController.getSendToken);
 
     app.post('/sendToken',controllers.AccountController.postSendToken);
 
     app.get('/logout',controllers.UserController.logout);
 
-    app.get('/config',controllers.ConfigController.getConfig);
+    app.get('/config',AuthMiddleware.isLogged,controllers.ConfigController.getConfig);
 
     app.post('/upload',controllers.ConfigController.postConfig);
 

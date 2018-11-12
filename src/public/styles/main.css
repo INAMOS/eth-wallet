@@ -23,16 +23,37 @@ html,body{
     right: 1.125em;
 }
 
-#profile:hover{
+.is-hoverable{
 
-    color:rgb(54,54,54);
-
-}
-
-
-#drop a:hover{
-
-    background-color:rgb(54,54,54);
-    color:white;
+    
 
 }
+
+
+/* @media (max-width:980px) {
+
+    .navbar-link::after {
+        border-color: white;
+        margin-top: -0.375em;
+        right: 1.125em;
+    }
+    
+    #profile:hover{
+    
+        color:rgb(54,54,54);
+    
+    }
+
+    #drop a:hover{
+
+        background-color:rgb(54,54,54);
+        color:white;
+
+    } 
+    
+    
+
+} */
+
+
+
