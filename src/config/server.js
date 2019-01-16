@@ -7,14 +7,16 @@ const morgan=require('morgan');
 const cookieParser=require('cookie-parser');
 const session=require('express-session');
 const fileUpload=require('express-fileupload');
-
+const dotenv=require('dotenv');
 
 
 //Settings
 app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname,'../views'))
 app.set('view engine','ejs');
-
+dotenv.config(
+    
+);
 
 //Middlewares
 app.use(express.json());

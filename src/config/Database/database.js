@@ -1,13 +1,7 @@
 module.exports={
-    host:"den1.mysql2.gear.host",
-    user:"exchange",
-    password:"Tm6f02?I9Kx~",
-    database:"exchange"
+    host:process.env.DB_HOST,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASSWORD,
+    database:process.env.DB_NAME
 }
 
-// module.exports={
-//     host:"localhost",
-//     user:"root",
-//     password:"",
-//     database:"exchange"
-// }

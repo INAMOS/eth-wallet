@@ -1,7 +1,8 @@
 var Web3=require('web3');
+var web3Key=process.env.INFURA_KEY;
 
-const ropsten='https://ropsten.infura.io/VadlMFAwqpQOBFUFNt3r';
-const localhost='https://localhost:8545';
+const ropsten=`https://ropsten.infura.io/${web3Key}`;
+//const localhost='https://localhost:8545';
 
 var web3=new Web3(ropsten); 
 
