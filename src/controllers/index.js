@@ -8,7 +8,9 @@ files.forEach(element => {
     var fileName=path.basename(element,'.js');
 
     if(fileName !== 'index'){
+
         exports[fileName]=require('./'+fileName);
+        
     }
     
 });

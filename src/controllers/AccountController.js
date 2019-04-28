@@ -10,7 +10,7 @@ module.exports={
 
         web3.eth.getBalance(req.user.direccion,function(error, result) {
 
-            ether=web3.utils.fromWei(result,'ether')
+            let  ether=web3.utils.fromWei(result,'ether')
 
             res.render('wallet',{user:req.user,balance:ether}); 
             

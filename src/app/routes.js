@@ -35,7 +35,9 @@ module.exports=(app,passport)=>{
 
     app.get('/logout',controllers.UserController.logout);
 
-    app.get('/config',AuthMiddleware.isLogged,controllers.ConfigController.getConfig);
+    app.get('/config',controllers.ConfigController.getConfig);
+
+    // app.get('/config',AuthMiddleware.isLogged,controllers.ConfigController.getConfig);
 
     app.post('/upload',controllers.ConfigController.postConfig);
 

@@ -1,7 +1,7 @@
-const fs=require('fs');
 const mysql=require('mysql');
 const config=require('.././config/Database/database');
-const path=require('path')
+const path=require('path');
+const migrate=require('../config/Module/module');
 
 
 module.exports={
@@ -14,41 +14,56 @@ module.exports={
 
     postConfig:function(req,res,next){
 
-        let   file=req.files.file;
+        let files=req.files;
 
-        file.mv(__dirname+`/.././views/Module/Files/${file.name}`,err => {
+        db=mysql.createConnection(config);
+        db.connect();
 
-            if(err){
+        migrate(files,db).then(response=>{
 
-                req.flash('uploadError','El archivo no se pudo cargar por favor intentelo de nuevo');
+            req.flash('uploadSuccess',response);
+            res.redirect('/config',{mess:req.flash('uploadError')});
+
+        }).catch(error=>{
+
+            req.flash('uploadError',error);
+            res.redirect('/config',{mess:req.flash('uploadError')});
+
+        })
+
+        // file1.mv(__dirname+`/.././views/Module/Files/${file.name}`,err => {
+
+        //     if(err){
+
+        //         req.flash('uploadError','El archivo no se pudo cargar por favor intentelo de nuevo');
                 
-                res.redirect('/config',{mess:req.flash('uploadError')});
+        //         res.redirect('/config',{mess:req.flash('uploadError')});
 
-            }else{
+        //     }else{
 
-                db=mysql.createConnection(config);
+        //         db=mysql.createConnection(config);
 
-                db.connect();
+        //         db.connect();
 
-                let name=path.basename(file.name,'.txt');
+        //         let name=path.basename(file.name,'.txt');
 
-                let route=__dirname.replace(/\\/g, '/');
+        //         let route=__dirname.replace(/\\/g, '/');
 
-                db.query(`LOAD DATA INFILE '${route}/.././views/Module/Files/${file.name}' IGNORE INTO TABLE ${name} FIELDS TERMINATED BY ',' LINES TERMINATED BY ';'`,(err,rows,fields)=>{
+        //         db.query(`LOAD DATA INFILE '${route}/.././views/Module/Files/${file.name}' IGNORE INTO TABLE ${name} FIELDS TERMINATED BY ',' LINES TERMINATED BY ';'`,(err,rows,fields)=>{
 
-                    if(err) throw err;
+        //             if(err) throw err;
 
-                    req.flash('uploadSuccess','Tabla respaldada con exito');
+        //             req.flash('uploadSuccess','Tabla respaldada con exito');
                 
-                    res.redirect('/config');
+        //             res.redirect('/config');
 
-                });
+        //         });
 
-            }
+        //     }
     
            
 
-        })
+        // })
 
 
     }
