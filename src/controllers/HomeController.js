@@ -29,13 +29,11 @@ module.exports={
 
         db.query(`SELECT * FROM transacciones WHERE ide_usu=${req.user.id}`,(err,rows,fields)=>{
 
-
             res.render('home',{
                 isAuthenticated:req.isAuthenticated(),
                 user:req.user,
                 data:rows
             });
-
 
         });
 

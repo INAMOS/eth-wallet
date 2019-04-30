@@ -22,12 +22,12 @@ module.exports={
         migrate(files,db).then(response=>{
 
             req.flash('uploadSuccess',response);
-            res.redirect('/config',{mess:req.flash('uploadError')});
+            res.redirect('/config');
 
         }).catch(error=>{
 
             req.flash('uploadError',error);
-            res.redirect('/config',{mess:req.flash('uploadError')});
+            res.redirect('/config');
 
         })
 

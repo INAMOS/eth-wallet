@@ -1,8 +1,6 @@
 
 async function proccesFiles(files,db){
 
-
-
     try{
 
         let {file1,file2,file3}=files;
@@ -15,19 +13,16 @@ async function proccesFiles(files,db){
 
     }catch(err){
 
-        console.log(err)
+        return Promise.reject('Error al respaldar')
+        
     }
   
-
 }
 
 
 const uploadFile=(file,db)=>{
 
     return new Promise((resolve,reject)=>{
-
-        // let route=__dirname.replace(/\\/g, '/')
-        // route
 
         const path=require('path');
 
@@ -43,11 +38,13 @@ const uploadFile=(file,db)=>{
 
                 let route=__dirname.replace(/\\/g, '/');
 
-                db.query(`LOAD DATA INFILE '${route}/.././views/Module/Files/${file.name}' IGNORE INTO TABLE ${name} FIELDS TERMINATED BY ',' LINES TERMINATED BY ';'`,(err,rows,fields)=>{
+                db.query(`LOAD DATA INFILE '${route}/../.././views/Module/Files/${file.name}' IGNORE INTO TABLE ${name} FIELDS TERMINATED BY ',' LINES TERMINATED BY ';'`,(err,rows,fields)=>{
 
-                    if(err) reject('Error al respaldar el archivo, intentelo de nuevo');
+                    if(!err)
+                        resolve('Migracion realizada con exito')
+                    else
+                        reject(`Error al respaldar el archivo ${file.name} , intentelo de nuevo`);
                     
-                    resolve('Migracion realizada con exito')
 
                     // SELECT *
                     // FROM criptomoneda

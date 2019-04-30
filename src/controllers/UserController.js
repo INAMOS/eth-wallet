@@ -31,7 +31,6 @@ module.exports={
 
             }else{
 
-
                 let salt=bcrypt.genSaltSync(10);
                 let password=bcrypt.hashSync(req.body.password,salt);
 
@@ -67,13 +66,10 @@ module.exports={
                     req.flash('info','Se ha registrado Correctamente, ya puede iniciar sesion');
                     res.redirect('/login');
                     
-                     
                 });
 
             }
-
-           
-        
+ 
         });
 
     },
