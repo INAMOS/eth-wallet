@@ -1,71 +1,62 @@
-const mysql=require('mysql');
-const config=require('.././config/Database/database');
-const path=require('path');
-const migrate=require('../config/Module/module');
+const mysql = require("mysql");
+const config = require(".././config/Database/database");
+const path = require("path");
+const migrate = require("../config/Module/module");
 
+module.exports = {
+  getConfig: function(req, res, next) {
+    res.render("Module/module", {
+      err: req.flash("uploadError"),
+      succ: req.flash("uploadSuccess")
+    });
+  },
 
-module.exports={
+  postConfig: function(req, res, next) {
+    let files = req.files;
 
-    getConfig:function(req,res,next){
+    db = mysql.createConnection(config);
+    db.connect();
 
-        res.render('Module/module',{err:req.flash('uploadError'),succ:req.flash('uploadSuccess')});
+    migrate(files, db)
+      .then(response => {
+        req.flash("uploadSuccess", response);
+        res.redirect("/config");
+      })
+      .catch(error => {
+        req.flash("uploadError", error);
+        res.redirect("/config");
+      });
 
-    },
+    // file1.mv(__dirname+`/.././views/Module/Files/${file.name}`,err => {
 
-    postConfig:function(req,res,next){
+    //     if(err){
 
-        let files=req.files;
+    //         req.flash('uploadError','El archivo no se pudo cargar por favor intentelo de nuevo');
 
-        db=mysql.createConnection(config);
-        db.connect();
+    //         res.redirect('/config',{mess:req.flash('uploadError')});
 
-        migrate(files,db).then(response=>{
+    //     }else{
 
-            req.flash('uploadSuccess',response);
-            res.redirect('/config');
+    //         db=mysql.createConnection(config);
 
-        }).catch(error=>{
+    //         db.connect();
 
-            req.flash('uploadError',error);
-            res.redirect('/config');
+    //         let name=path.basename(file.name,'.txt');
 
-        })
+    //         let route=__dirname.replace(/\\/g, '/');
 
-        // file1.mv(__dirname+`/.././views/Module/Files/${file.name}`,err => {
+    //         db.query(`LOAD DATA INFILE '${route}/.././views/Module/Files/${file.name}' IGNORE INTO TABLE ${name} FIELDS TERMINATED BY ',' LINES TERMINATED BY ';'`,(err,rows,fields)=>{
 
-        //     if(err){
+    //             if(err) throw err;
 
-        //         req.flash('uploadError','El archivo no se pudo cargar por favor intentelo de nuevo');
-                
-        //         res.redirect('/config',{mess:req.flash('uploadError')});
+    //             req.flash('uploadSuccess','Tabla respaldada con exito');
 
-        //     }else{
+    //             res.redirect('/config');
 
-        //         db=mysql.createConnection(config);
+    //         });
 
-        //         db.connect();
+    //     }
 
-        //         let name=path.basename(file.name,'.txt');
-
-        //         let route=__dirname.replace(/\\/g, '/');
-
-        //         db.query(`LOAD DATA INFILE '${route}/.././views/Module/Files/${file.name}' IGNORE INTO TABLE ${name} FIELDS TERMINATED BY ',' LINES TERMINATED BY ';'`,(err,rows,fields)=>{
-
-        //             if(err) throw err;
-
-        //             req.flash('uploadSuccess','Tabla respaldada con exito');
-                
-        //             res.redirect('/config');
-
-        //         });
-
-        //     }
-    
-           
-
-        // })
-
-
-    }
-
-}
+    // })
+  }
+};
