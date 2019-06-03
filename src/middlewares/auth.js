@@ -3,7 +3,6 @@ module.exports={
         
         if(req.isAuthenticated()){
             
-            
             next();
 
         }else{

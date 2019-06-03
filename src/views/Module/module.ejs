@@ -128,7 +128,9 @@
                     <hr>
                     <article class="message is-primary">
                             <div class="message-body">
-                            <%= succ[0] %>
+                                Migracion realizada con exito, se han insertado <%= succ.reduce(function(a,b){
+                                    return a+b;
+                                }) %> registros.
                             </div>
                     </article>
         
